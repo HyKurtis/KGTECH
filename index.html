@@ -15,8 +15,8 @@
     }
     body {
       font-family: 'Inter', sans-serif;
-      background: #0e0e0e;
-      color: white;
+      background: #ffffff;
+      color: #111;
       overflow-x: hidden;
     }
     header {
@@ -24,57 +24,59 @@
       text-align: center;
       font-size: 2.5rem;
       font-weight: 800;
-      letter-spacing: -1px;
-      color: #ffffff;
+      color: #111;
     }
     .carousel {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
       padding: 2rem;
-    }
-    .carousel::-webkit-scrollbar {
-      display: none;
+      max-width: 1200px;
+      margin: 0 auto;
     }
     .site-card {
-      flex: 0 0 80%;
-      background: #1c1c1c;
-      border-radius: 20px;
+      background: #f9f9f9;
+      border-radius: 16px;
       overflow: hidden;
-      scroll-snap-align: center;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-      transition: transform 0.4s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
     }
     .site-card:hover {
       transform: scale(1.02);
     }
     .site-img {
       width: 100%;
-      height: 500px;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
       display: block;
+    }
+    @media (max-width: 768px) {
+      .site-img {
+        content: attr(data-mobile-src);
+      }
     }
     .site-info {
       padding: 1.5rem;
       text-align: center;
     }
     .site-info h2 {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       margin-bottom: 0.5rem;
-      color: #00d8ff;
+      color: #0077cc;
     }
     .site-info a {
       text-decoration: none;
-      color: #fff;
-      border: 1px solid #00d8ff;
+      color: #0077cc;
+      border: 1px solid #0077cc;
       padding: 0.5rem 1rem;
       border-radius: 8px;
       transition: all 0.3s ease;
+      display: inline-block;
+      margin-top: 0.5rem;
     }
     .site-info a:hover {
-      background: #00d8ff;
-      color: #0e0e0e;
+      background: #0077cc;
+      color: white;
     }
   </style>
 </head>
@@ -82,21 +84,21 @@
   <header>KGTECH Portfolio</header>
   <div class="carousel">
     <div class="site-card">
-      <img src="https://www.regencychess.ie/cdn/shop/files/logo_250x.png" alt="Regency Chess Ireland" class="site-img" />
+      <img src="https://www.regencychess.ie/cdn/shop/files/logo_250x.png" data-mobile-src="https://www.regencychess.ie/cdn/shop/files/logo_250x.png" alt="Regency Chess Ireland" class="site-img" />
       <div class="site-info">
         <h2>RegencyChess.ie</h2>
         <a href="https://www.regencychess.ie" target="_blank">Visit Site</a>
       </div>
     </div>
     <div class="site-card">
-      <img src="https://www.chesssets.co.uk/cdn/shop/files/logo_250x.png" alt="Chess Sets UK" class="site-img" />
+      <img src="https://www.chesssets.co.uk/cdn/shop/files/logo_250x.png" data-mobile-src="https://www.chesssets.co.uk/cdn/shop/files/logo_250x.png" alt="Chess Sets UK" class="site-img" />
       <div class="site-info">
         <h2>ChessSets.co.uk</h2>
         <a href="https://www.chesssets.co.uk" target="_blank">Visit Site</a>
       </div>
     </div>
     <div class="site-card">
-      <img src="https://www.coffeehouseguitars.co.uk/cdn/shop/files/logo_250x.png" alt="Coffee House Guitars" class="site-img" />
+      <img src="https://www.coffeehouseguitars.co.uk/cdn/shop/files/logo_250x.png" data-mobile-src="https://www.coffeehouseguitars.co.uk/cdn/shop/files/logo_250x.png" alt="Coffee House Guitars" class="site-img" />
       <div class="site-info">
         <h2>CoffeeHouseGuitars.co.uk</h2>
         <a href="https://www.coffeehouseguitars.co.uk" target="_blank">Visit Site</a>
