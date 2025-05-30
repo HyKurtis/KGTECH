@@ -112,6 +112,9 @@
         padding: 2rem;
         transition: transform 0.3s, box-shadow 0.3s;
         box-shadow: 0 0 10px rgba(0, 255, 110, 0.1);
+  flex-shrink: 0;
+  min-width: 0;
+  overflow: hidden;
       }
 
       .project-card:hover {
@@ -120,14 +123,15 @@
       }
 
       .project-card-image {
-        margin-bottom: 10px;
-        height: 200px;
-        /* or auto if you're okay with dynamic height */
-        object-fit: contain;
-        display: block;
-        background-color: #1a1a1a;
-        /* helps show transparent images cleanly */
-      }
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  display: block;
+  background-color: #1a1a1a;
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+}
 
       .project-card-title {
         font-size: 25px;
