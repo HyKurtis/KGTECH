@@ -1,116 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KGTECH Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #ffffff;
-      color: #111;
-      line-height: 1.6;
-    }
-    header {
-      padding: 4rem 2rem 2rem;
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #111;
-    }
-    section {
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .site-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    .site-card {
-      background: #fdfdfd;
-      border: 1px solid #e0e0e0;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .site-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    }
-    .site-img {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      background-color: #eee;
-      display: block;
-    }
-    .site-info {
-      padding: 1.5rem;
-      text-align: center;
-    }
-    .site-info h2 {
-      font-size: 1.25rem;
-      color: #0077cc;
-      margin-bottom: 0.5rem;
-    }
-    .site-info a {
-      display: inline-block;
-      text-decoration: none;
-      color: #0077cc;
-      border: 1px solid #0077cc;
-      padding: 0.5rem 1.2rem;
-      border-radius: 6px;
-      transition: background 0.3s, color 0.3s;
-    }
-    .site-info a:hover {
-      background: #0077cc;
-      color: #fff;
-    }
-    @media (max-width: 768px) {
-      .site-img {
-        aspect-ratio: 9 / 16;
-        object-fit: cover;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kurtis | Developer Portfolio</title>
+    <style>
+      :root {
+        --bg: #0d0b1f;
+        --accent: #c1edff;
+        --text: #f5f5f5;
+        --card-bg: rgba(255, 255, 255, 0.05);
+        --border: rgba(255, 255, 255, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      header {
+        position: fixed;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 1.5rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--accent);
+      }
+
+      nav a {
+        color: var(--text);
+        margin-left: 2rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: var(--accent);
+      }
+
+      .hero {
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        padding-top: 10rem;
+        background: radial-gradient(circle at top, #1b1c3a 0%, #0d0b1f 100%);
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        color: var(--accent);
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        max-width: 600px;
+        margin-top: 1rem;
+      }
+
+      section {
+        padding: 6rem 2rem;
+        max-width: 100%;
+        margin: auto;
+      }
+
+      section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        color: var(--accent);
+        text-align: center;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .project-card {
+        min-height: 300px;
+        /* optional */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 2rem;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 0 10px rgba(0, 255, 110, 0.1);
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 0px 5px 5px var(--accent);
+      }
+
+      .project-card-image {
+        margin-bottom: 10px;
+        height: 200px;
+        /* or auto if you're okay with dynamic height */
+        object-fit: contain;
+        display: block;
+        background-color: #1a1a1a;
+        /* helps show transparent images cleanly */
+      }
+
+      .project-card-title {
+        font-size: 25px;
+      }
+
+      footer {
+        background: #090818;
+        text-align: center;
+        padding: 2rem;
+        font-size: 0.9rem;
+        border-top: 1px solid var(--border);
+      }
+
+      .home {}
+
+      @media (max-width: 768px) {
+        nav a {
+          margin-left: 1rem;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+      }
+
+      .project-card-title {
+        margin-bottom: 0;
+      }
+
+      #typed-about p,
+      #typed-about h2 {
+        white-space: pre-wrap;
+        margin: 1rem 0;
+        font-size: 1.1rem;
+        text-align: center;
+      }
+
+      #typed-about h2 {
+        font-size: 2rem;
+        color: var(--accent);
+      }
+
+      #typed-about strong {
+        font-weight: bold;
+      }
+
+      #typed-about p::after,
+      #typed-about h2::after {
+        content: '|';
+        animation: blink 0.8s infinite;
+      }
+
+      @keyframes blink {
+
+        0%,
+        50%,
+        100% {
+          opacity: 1;
+        }
+
+        25%,
+        75% {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo" style="max-width: 20%">
+        <img width="45%" src="C:\Users\hykur\Desktop\KGTECH LOGO\white.png">
+      </div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+    <section id="home" class="hero">
+      <img width="45%" src="C:\Users\hykur\Desktop\KGTECH LOGO\white.png">
+      <p>Talk. Launch. Grow.</p>
+    </section>
+    <section id="about">
+      <h2></h2>
+      <div class="blurb" style="max-width: 800px; margin: auto; text-align: center;">
+        <div class="type-on-scroll" id="typed-about"></div>
+      </div>
+    </section>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project-grid">
+        <div class="project-card" data-link="https://regencychess.ie">
+          <img class="project-card-image" src="C:\Users\hykur\Desktop\portfolio screenshots desktop\regencychess-desktop.png" alt="Regency Chess Desktop">
+          <h2 class="project-card-title">Regency Chess Europe</h2>
+          <p class="project-card-type">Shopify Build & Maintenance</p>
+        </div>
+        <div class="project-card" data-link="https://chesssets.co.uk">
+          <img class="project-card-image" src="C:\Users\hykur\Desktop\portfolio screenshots desktop\chesssetsuk-desktop.png" alt="Chess Sets UK Desktop">
+          <h2 class="project-card-title">Chess Sets UK</h2>
+          <p class="project-card-type">Shopify Build & Maintenance</p>
+        </div>
+        <div class="project-card" data-link="https://coffeehouseguitars.co.uk">
+          <img class="project-card-image" src="C:\Users\hykur\Desktop\portfolio screenshots desktop\chg-desktop.png" alt="Coffee House Guitars Desktop">
+          <h2 class="project-card-title">Coffee House Guitars</h2>
+          <p class="project-card-type">Shopify Build & Maintenance</p>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <h2>Let’s Work</h2>
+      <p style="text-align: center;"> Need results without the waffle? Drop a message. <br>Email: <strong>kurtis@kgtech.dev</strong>
+      </p>
+    </section>
+    <footer> &copy; 2025 KGTECH. Built without plugins. Powered by rage and pixels. </footer>
+  </body>
+</html>
+<script>
+  const aboutContent = [{
+    tag: 'h2',
+    html: 'We are great. We are human.'
+  }, {
+    tag: 'p',
+    html: 'Helping businesses build purposeful online presence.'
+  }, {
+    tag: 'p',
+    html: 'Ranging from the setup and launch of trusted professional websites.'
+  }, {
+    tag: 'p',
+    html: 'Making sure your business is visible on the platforms that matter.'
+  }, {
+    tag: 'p',
+    html: 'Taking all the stress, and returning all the results.'
+  }, {
+    tag: 'p',
+    html: 'Focusing on effort that matters.'
+  }];
+  const container = document.getElementById('typed-about');
+  const typingSpeed = 30;
+  const elementDelay = 600;
+
+  function typeElement({
+    tag,
+    html
+  }, callback) {
+    const tempEl = document.createElement(tag);
+    container.appendChild(tempEl);
+    // Strip tags to type character by character
+    const dummy = document.createElement('div');
+    dummy.innerHTML = html;
+    const fullText = dummy.textContent || dummy.innerText || '';
+    let i = 0;
+
+    function typeChar() {
+      if (i <= fullText.length) {
+        tempEl.innerHTML = html.substring(0, i) + '|';
+        i++;
+        setTimeout(typeChar, typingSpeed);
+      } else {
+        tempEl.innerHTML = html;
+        setTimeout(callback, elementDelay);
       }
     }
-  </style>
-</head>
-<body>
-  <header>KGTECH Portfolio</header>
-  <section>
-    <div class="site-grid">
-      <div class="site-card">
-        <img src="https://www.regencychess.ie/cdn/shop/files/logo_250x.png" alt="Regency Chess Ireland" class="site-img" />
-        <div class="site-info">
-          <h2>RegencyChess.ie</h2>
-          <a href="https://www.regencychess.ie" target="_blank">Visit Site</a>
-        </div>
-      </div>
-      <div class="site-card">
-        <img src="https://www.chesssets.co.uk/cdn/shop/files/logo_250x.png" alt="Chess Sets UK" class="site-img" />
-        <div class="site-info">
-          <h2>ChessSets.co.uk</h2>
-          <a href="https://www.chesssets.co.uk" target="_blank">Visit Site</a>
-        </div>
-      </div>
-      <div class="site-card">
-        <img src="https://www.coffeehouseguitars.co.uk/cdn/shop/files/logo_250x.png" alt="Coffee House Guitars" class="site-img" />
-        <div class="site-info">
-          <h2>CoffeeHouseGuitars.co.uk</h2>
-          <a href="https://www.coffeehouseguitars.co.uk" target="_blank">Visit Site</a>
-        </div>
-      </div>
-    </div>
-  </section>
-</body>
-</html>
+    typeChar();
+  }
+
+  function startTyping(contentList) {
+    let i = 0;
+
+    function next() {
+      if (i < contentList.length) {
+        typeElement(contentList[i], next);
+        i++;
+      }
+    }
+    next();
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !container.classList.contains('typed')) {
+        container.classList.add('typed');
+        startTyping(aboutContent);
+        observer.unobserve(container);
+      }
+    });
+  }, {
+    threshold: 0.5
+  });
+  observer.observe(container);
+
+  
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.style.cursor = 'pointer'; // Optional: shows hand cursor
+    card.addEventListener('click', () => {
+      const link = card.getAttribute('data-link');
+      if (link) {
+        window.open(link, '_blank'); // or use '_self' for same tab
+      }
+    });
+  });
+</script>
